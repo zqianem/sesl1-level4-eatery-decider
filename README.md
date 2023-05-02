@@ -9,7 +9,7 @@ Build a web app that allows any two people to decide where to eat together. For 
 Download and install:
 
 ```bash
-git clone https://github.com/zqianem/sesl1-leve4-eatery-decider.git
+git clone https://github.com/zqianem/sesl1-level4-eatery-decider.git
 npm install
 ```
 
