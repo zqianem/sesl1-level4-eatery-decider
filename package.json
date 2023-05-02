@@ -23,5 +23,8 @@
 	"type": "module",
 	"lint-staged": {
 		"**/*": "prettier --write --ignore-unknown"
+	},
+	"dependencies": {
+		"@supabase/supabase-js": "^2.21.0"
 	}
 }
