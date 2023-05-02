@@ -1,22 +1,25 @@
-# create-svelte
+# Level 4 Challenge
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+It’s a Friday evening. You’ve had a long week and you just want to go out and have a nice dinner. It’s 5:30 pm and it’s time to decide where to have dinner. And here begins the age-old challenge of deciding where to eat with your partner/roommate/friend… You have been in the mood for some Thai food, but the other person is feeling more like Italian. What to do?
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+Build a web app that allows any two people to decide where to eat together. For this challenge, we want you to use an API that allows you to access restaurant information and design a system that allows two people to prioritize and decide on where to eat in a fair manner. There is an emphasis on “fair” here – we all know that one person who always gets to decide where to eat. This challenge is purposefully vague – we want you to get creative!
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Download and install:
+
+```bash
+git clone https://github.com/zqianem/sesl1-leve4-eatery-decider.git
+npm install
+```
+
+Get the project URL and service role API key from [Supabase](https://app.supabase.com/project/ejyhdjdsexqnttkydvve/settings/api) and add them to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Start a development server:
 
 ```bash
 npm run dev
@@ -34,5 +37,3 @@ npm run build
 ```
 
 You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
