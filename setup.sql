@@ -6,7 +6,7 @@ create table
     id uuid not null default uuid_generate_v4 (),
     created_at timestamp with time zone not null default now(),
     options jsonb[] not null default '{}'::jsonb[],
-    votes smallint[][] not null default '{}'::smallint[][],
+    votes jsonb[] not null default '{}'::jsonb[],
     votes_required smallint not null default 2,
     winner smallint null,
     constraint eat_sessions_pkey primary key (id)
@@ -20,7 +20,7 @@ create or replace function
 		returns smallint
 		language sql
 		as $$
-			select coalesce(array_length(votes, 1), 0)
+			select cardinality(votes)
 			from eat_sessions
 			where id = eat_sessions.id;
 		$$;

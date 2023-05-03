@@ -42,16 +42,3 @@ export async function get_winner(supabase, id) {
 
 	return data;
 }
-
-// convert 2D jagged array to square array
-function pad(array) {
-	const length = Math.max(...array.map((subarray) => subarray.length));
-	return array.map((subarray) =>
-		subarray.concat(new Array(length - subarray.length).fill(null))
-	);
-}
-
-// convert 2D square array to jagged array
-function unpad(array) {
-	return array.map((subarray) => subarray.filter((v) => v !== null));
-}
