@@ -14,3 +14,23 @@ create table
 
 alter table
   eat_sessions enable row level security;
+
+create or replace function
+	get_vote_count(id uuid)
+		returns smallint
+		language sql
+		as $$
+			select coalesce(array_length(votes, 1), 0)
+			from eat_sessions
+			where id = eat_sessions.id;
+		$$;
+
+create or replace function
+	get_winner(id uuid)
+		returns jsonb
+		language sql
+		as $$
+			select options[winner]
+			from eat_sessions
+			where id = eat_sessions.id;
+		$$;
