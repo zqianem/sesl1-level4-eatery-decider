@@ -33,12 +33,3 @@ export async function get_vote_count(supabase, id) {
 
 	return data;
 }
-
-export async function get_winner(supabase, id) {
-	const { data, error } = await supabase.rpc('get_winner', { id });
-
-	if (error) throw sk_error(500, error);
-	if (data === null) throw sk_error(404, 'Not found');
-
-	return data;
-}

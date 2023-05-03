@@ -4,9 +4,6 @@ drop table if exists
 drop function if exists
 	get_vote_count;
 
-drop function if exists
-	get_winner;
-
 create table
   public.eat_sessions (
     id uuid not null default uuid_generate_v4 (),
@@ -27,16 +24,6 @@ create function
 		language sql
 		as $$
 			select jsonb_array_length(votes)
-			from eat_sessions
-			where id = eat_sessions.id;
-		$$;
-
-create function
-	get_winner(id uuid)
-		returns jsonb
-		language sql
-		as $$
-			select options[winner]
 			from eat_sessions
 			where id = eat_sessions.id;
 		$$;
