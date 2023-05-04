@@ -4,6 +4,9 @@ drop table if exists
 drop function if exists
 	get_vote_count;
 
+drop function if exists
+	add_vote;
+
 create table
   public.eat_sessions (
     id uuid not null default uuid_generate_v4 (),
@@ -25,5 +28,16 @@ create function
 		as $$
 			select jsonb_array_length(votes)
 			from eat_sessions
-			where id = eat_sessions.id;
+			where id = $1;
+		$$;
+
+create function
+	add_vote(id uuid, vote jsonb)
+		returns jsonb
+		language sql
+		as $$
+			update eat_sessions
+			set votes = votes || jsonb_build_array(vote)
+			where id = $1 and jsonb_array_length(votes) < votes_required
+			returning votes;
 		$$;
