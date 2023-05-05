@@ -6,6 +6,7 @@
 		<slot />
 	</main>
 </div>
+<footer><a href="https://www.freepik.com/free-vector/cartoon-italian-restaurant-interior_15569250.htm#query=restaurant&position=25&from_view=search&track=sph">Image by pikisuperstar</a> on Freepik</footer>
 
 <style>
 	:global(*) {
@@ -33,6 +34,13 @@
 
 	header {
 		padding: 8px;
+	}
+	
+		footer {
+		text-align: center;
+		background-color: rgb(228, 87, 59);
+		color: antiquewhite;
+		padding: 5px;
 	}
 
 	h1 {
