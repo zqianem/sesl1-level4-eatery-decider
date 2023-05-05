@@ -38,9 +38,11 @@
 	
 		footer {
 		text-align: center;
-		background-color: rgb(228, 87, 59);
 		color: antiquewhite;
-		padding: 5px;
+		position: absolute;
+    bottom: 0px;
+    height: 10px;
+    width: 100%;
 	}
 
 	h1 {
