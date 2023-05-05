@@ -11,7 +11,7 @@
 </script>
 
 <h2>Step 2: Share Link</h2>
-<p>Share before continuing:</p>
+<p>Copy before continuing:</p>
 <span>{url}</span>
 <button on:click={copy} disabled={copied} class="copy">
 	{copied ? 'Copied!' : 'Copy link'}
