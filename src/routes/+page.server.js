@@ -24,6 +24,7 @@ export const actions = {
 
 		const id = await create_session(supabase, options, votes_required);
 
-		throw redirect(303, `/session/${id}/link`);
+		const page = votes_required > 1 ? 'link' : 'options';
+		throw redirect(303, `/session/${id}/${page}`);
 	}
 };
