@@ -16,6 +16,10 @@
 		margin: 0;
 		font-family: system-ui;
 		font-size: 18px;
+		background-image: url(back.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
 	}
 
 	div.grid {
