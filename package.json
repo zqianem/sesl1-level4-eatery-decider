@@ -13,7 +13,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-netlify": "^2.0.7",
 		"@sveltejs/kit": "^1.5.0",
-		"d3-array": "^3.2.3",
+		"array-shuffle": "^3.0.0",
 		"haversine-distance": "^1.2.1",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.2",

@@ -1,6 +1,6 @@
 import { error as sk_error } from '@sveltejs/kit';
 import { TOMTOM_KEY } from '$env/static/private';
-import { shuffle } from 'd3-array';
+import shuffle from 'array-shuffle';
 import haversine from 'haversine-distance';
 
 export async function create_session(supabase, lat, lon, radius) {
@@ -81,21 +81,22 @@ async function get_options(lat, lon, radius) {
 
 	if (errorText) throw sk_error(500, errorText);
 
-	const { results } = data;
-	shuffle(data.results);
+	return shuffle(data.results)
+		.slice(0, 10)
+		.map((result) => tomtom_result_to_option(result, lat, lon));
+}
 
-	return results.slice(0, 10).map((result) => {
-		const {
-			poi: { name, phone, categories },
-			address: { freeformAddress },
-			position
-		} = result;
-		return {
-			name,
-			phone,
-			address: freeformAddress,
-			distance: haversine({ lat, lon }, position),
-			type: categories.filter((category) => category !== 'restaurant')
-		};
-	});
+function tomtom_result_to_option(result, lat, lon) {
+	const {
+		poi: { name, phone, categories },
+		address: { freeformAddress },
+		position
+	} = result;
+	return {
+		name,
+		phone,
+		address: freeformAddress,
+		distance: haversine({ lat, lon }, position),
+		tags: categories.filter((category) => category !== 'restaurant')
+	};
 }
