@@ -4,7 +4,7 @@ import { get_options, create_session, reverse_lookup } from '$lib/server';
 export async function load({ locals: { supabase }, platform }) {
 	const { latitude: lat = 37.337, longitude: lon = -121.89 } =
 		platform?.context.geo ?? {};
-	const address = `near ${await reverse_lookup(lat, lon)}`;
+	const address = await reverse_lookup(lat, lon);
 
 	return { lat, lon, address };
 }
@@ -15,7 +15,7 @@ export const actions = {
 		const lat = form.get('lat');
 		const lon = form.get('lon');
 		const radius = form.get('radius');
-		const votes_required = form.get('people');
+		const votes_required = form.get('voters');
 
 		const options = await get_options(lat, lon, radius);
 		if (options.length === 0) {

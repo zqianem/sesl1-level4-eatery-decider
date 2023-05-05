@@ -6,7 +6,7 @@
 
 	let { lat, lon, address } = data; // intentionally not reactive to data
 	let radius = 2;
-	let people = 2;
+	let voters = 2;
 
 	let precise = false;
 	let location_loading = false;
@@ -44,15 +44,22 @@
 </script>
 
 <form method="POST" use:enhance on:submit={handle_submit} id="myform">
-	<label>
-		Location:
+	<label class="loc">
+		<span>Location:</span>
 		<output name="address" for="lat lon">{address}</output>
 		<input type="hidden" name="lat" value={lat} id="lat" />
 		<input type="hidden" name="lon" value={lon} id="lon" />
 	</label>
-	<button type="button" disabled={precise} on:click={use_precise_location}>
+	<button
+		class="precise"
+		type="button"
+		disabled={precise}
+		on:click={use_precise_location}
+	>
 		{#if location_loading}
-			Loading...
+			Locating...
+		{:else if precise}
+			Found!
 		{:else}
 			Use precise location
 		{/if}
@@ -71,15 +78,15 @@
 		/>
 	</label>
 	<label>
-		Number of people:
-		<output name="count" for="people">{people}</output>
+		Number of voters:
+		<output name="count" for="voters">{voters}</output>
 		<input
 			type="range"
-			name="people"
-			id="people"
+			name="voters"
+			id="voters"
 			min="1"
 			max="10"
-			bind:value={people}
+			bind:value={voters}
 		/>
 	</label>
 	{#if form?.no_results}
@@ -89,11 +96,53 @@
 <button disabled={loading} form="myform">Find restaurants</button>
 
 <style>
+	form {
+		text-align: center;
+		width: 100%;
+	}
+
 	label {
 		display: block;
+		margin: 1em 0;
 	}
 
 	input {
 		display: block;
+		width: 100%;
+	}
+
+	label.loc {
+		min-height: 100px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	label.loc span {
+		display: block;
+		margin-bottom: 0.5em;
+	}
+
+	label.loc output {
+		display: block;
+		font-weight: bold;
+	}
+
+	button.precise {
+		margin: -0.5em 0 1em;
+		border-radius: 100px;
+		appearance: none;
+		border: none;
+		font-size: 16px;
+		padding: 0.5em;
+		background: #0a74d6;
+		color: white;
+		cursor: pointer;
+		width: 230px;
+	}
+
+	button:disabled {
+		background: grey;
 	}
 </style>
