@@ -25,6 +25,11 @@
 		font-weight: 500;
 		user-select: none;
 		text-align: center;
+		display: block;
+		overflow: auto;
+		max-width: 300px;
+		height: 36px;
+		white-space: nowrap;
 	}
 
 	button.copy {
