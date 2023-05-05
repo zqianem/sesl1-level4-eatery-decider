@@ -81,7 +81,6 @@ export async function get_options(lat, lon, radius) {
 	const params = new URLSearchParams({
 		key: TOMTOM_KEY,
 		categorySet: 7315, // restaurants
-		openingHours: 'nextSevenDays',
 		limit: 100,
 		lat,
 		lon,
@@ -95,36 +94,13 @@ export async function get_options(lat, lon, radius) {
 	if (errorText) throw sk_error(500, errorText);
 
 	return shuffle(data.results)
-		.filter((result) => is_open_or_unknown(result.poi.openingHours))
 		.slice(0, 10)
 		.map((result) => tomtom_result_to_option(result, lat, lon));
 }
 
-function is_open_or_unknown(hours) {
-	if (!hours) return true;
-	const now = new Date();
-
-	return hours.timeRanges.some(({ startTime, endTime }) => {
-		const start = rangeTime_to_date(startTime);
-		const end = rangeTime_to_date(endTime);
-		return now.getTime() >= start.getTime() && now.getTime() <= end.getTime();
-	});
-}
-
-function get_closing_time(hours) {
-	if (!hours) return 'unknown';
-	const now = new Date();
-
-	return hours.timeRanges.find(({ startTime, endTime }) => {
-		const start = rangeTime_to_date(startTime);
-		const end = rangeTime_to_date(endTime);
-		return now.getTime() >= start.getTime() && now.getTime() <= end.getTime();
-	}).endTime;
-}
-
 function tomtom_result_to_option(result, lat, lon) {
 	const {
-		poi: { name, phone, categories, openingHours },
+		poi: { name, phone, categories },
 		address: { freeformAddress },
 		position
 	} = result;
@@ -133,8 +109,7 @@ function tomtom_result_to_option(result, lat, lon) {
 		phone,
 		address: freeformAddress,
 		distance: haversine({ lat, lon }, position),
-		tags: categories.filter((category) => category !== 'restaurant'),
-		closes_at: get_closing_time(openingHours)
+		tags: categories.filter((category) => category !== 'restaurant')
 	};
 }
 
