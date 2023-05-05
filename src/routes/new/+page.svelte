@@ -1,8 +1,11 @@
 <script>
 	import { enhance } from '$app/forms';
+	import { getContext } from 'svelte';
 
 	export let data;
 	export let form;
+
+	const spinner = getContext('spinner');
 
 	let { lat, lon, address } = data; // intentionally not reactive to data
 	let radius = 2;
@@ -36,6 +39,7 @@
 
 	function handle_submit() {
 		loading = true;
+		$spinner = true;
 	}
 
 	function pluralize_miles(length) {

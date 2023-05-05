@@ -1,13 +1,17 @@
 <script>
 	import { enhance } from '$app/forms';
+	import { getContext } from 'svelte';
 
 	export let data;
 	$: ({ options } = data);
+
+	const spinner = getContext('spinner');
 
 	let loading = false;
 
 	function handle_submit() {
 		loading = true;
+		$spinner = true;
 	}
 </script>
 

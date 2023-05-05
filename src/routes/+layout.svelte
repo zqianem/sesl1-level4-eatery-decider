@@ -1,8 +1,23 @@
+<script>
+	import Spinner from './Spinner.svelte';
+	import { navigating } from '$app/stores';
+	import { setContext } from 'svelte';
+	import { writable } from 'svelte/store';
+
+	const spinner = writable(false);
+	setContext('spinner', spinner);
+
+	$: if (!$navigating) {
+		$spinner = false;
+	}
+</script>
+
 <div class="grid">
 	<header>
 		<h1><a href="/">Decide on Food</a></h1>
 	</header>
 	<main>
+		<Spinner loading={$navigating || $spinner} />
 		<slot />
 	</main>
 </div>
@@ -25,6 +40,7 @@
 		height: 100dvh;
 		padding: 4px;
 		grid: auto minmax(0, 600px) / minmax(min-content, 420px);
+		background: #f6f8fa;
 	}
 
 	header {
