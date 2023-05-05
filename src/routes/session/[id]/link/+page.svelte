@@ -10,19 +10,19 @@
 	}
 </script>
 
-<h2>Step 2: Share link</h2>
-<p>Share this link before voting:</p>
+<h2>Step 2: Share Link</h2>
+<p>Share before continuing:</p>
 <span>{url}</span>
 <button on:click={copy} disabled={copied} class="copy">
 	{copied ? 'Copied!' : 'Copy link'}
 </button>
 <form action={url} id="formlink" />
-<button form="formlink" disabled={!copied}>Vote</button>
+<button form="formlink" disabled={!copied}>Continue</button>
 
 <style>
 	span {
 		color: black;
-		font-weight: bold;
+		font-weight: 500;
 		user-select: none;
 		text-align: center;
 	}

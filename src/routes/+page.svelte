@@ -3,11 +3,11 @@
 
 <ol>
 	<li>Get list of nearby eats</li>
-	<li>Share link</li>
+	<li>Share link with friend(s)</li>
 	<li>Everyone votes!</li>
 </ol>
 
-<p>The winner will be randomly picked from the overlap in votes.</p>
+<p>The winner will be randomly picked from among the overlap in votes.</p>
 
 <a href="/new">Start</a>
 
@@ -18,5 +18,10 @@
 
 	ol {
 		padding: 0;
+		font-weight: 500;
+	}
+
+	li {
+		padding: 0.25em;
 	}
 </style>

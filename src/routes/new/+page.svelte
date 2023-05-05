@@ -91,7 +91,7 @@
 		/>
 	</label>
 	{#if form?.no_results}
-		<p>No open restaurants found — try increasing the max distance</p>
+		<p class="red">No restaurants found — try increasing the max distance</p>
 	{/if}
 </form>
 <button disabled={loading} form="myform">Find restaurants</button>
@@ -127,7 +127,7 @@
 
 	label.loc output {
 		display: block;
-		font-weight: bold;
+		font-weight: 500;
 	}
 
 	button.precise {
@@ -145,5 +145,10 @@
 
 	button:disabled {
 		background: grey;
+	}
+
+	p.red {
+		color: #660000;
+		font-weight: 500;
 	}
 </style>
