@@ -24,7 +24,7 @@
 		align-content: center;
 		height: 100dvh;
 		padding: 4px;
-		grid: auto minmax(min-content, 600px) / minmax(min-content, 420px);
+		grid: auto minmax(0, 600px) / minmax(min-content, 420px);
 	}
 
 	header {
@@ -49,7 +49,6 @@
 		padding: 16px 50px;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		align-items: center;
 		background: white;
 	}
