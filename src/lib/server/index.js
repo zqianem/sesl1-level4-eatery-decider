@@ -3,8 +3,7 @@ import { TOMTOM_KEY } from '$env/static/private';
 import shuffle from 'array-shuffle';
 import haversine from 'haversine-distance';
 
-export async function create_session(supabase, lat, lon, radius) {
-	const options = await get_options(lat, lon, radius);
+export async function create_session(supabase, options) {
 	const { data, error } = await supabase
 		.from('eat_sessions')
 		.insert({ options })
@@ -65,14 +64,27 @@ export async function set_winner(supabase, id, winner) {
 	if (error) throw sk_error(500, error);
 }
 
-async function get_options(lat, lon, radius) {
+export async function reverse_lookup(lat, lon) {
+	const url =
+		`https://api.tomtom.com/search/2/reverseGeocode/crossStreet/` +
+		`${lat},${lon}.json?key=${TOMTOM_KEY}`;
+	const response = await fetch(url);
+	const data = await response.json();
+	const { errorText } = data;
+
+	if (errorText) throw sk_error(500, errorText);
+
+	return data.addresses[0].address.freeformAddress;
+}
+
+export async function get_options(lat, lon, radius) {
 	const params = new URLSearchParams({
 		key: TOMTOM_KEY,
 		categorySet: 7315, // restaurants
 		limit: 100,
 		lat,
 		lon,
-		radius
+		radius: radius * 1609.344
 	});
 	const url = `https://api.tomtom.com/search/2/nearbySearch/.json?${params}`;
 	const response = await fetch(url);
