@@ -1,7 +1,5 @@
-<p>
-	Can't decide or agree on where to eat? This app will help you decide in three
-	easy steps:
-</p>
+<p>Can't agree on where to eat?</p>
+<p>This app will help you decide in three easy steps:</p>
 
 <ol>
 	<li>Get list of nearby eats</li>
@@ -12,3 +10,9 @@
 <p>The winner will be randomly picked from the overlap in votes.</p>
 
 <a href="/new">Start</a>
+
+<style>
+	ol {
+		padding: 0;
+	}
+</style>

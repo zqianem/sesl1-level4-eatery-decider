@@ -15,14 +15,16 @@
 	:global(body) {
 		margin: 0;
 		font-family: system-ui;
+		font-size: 18px;
 	}
 
 	div.grid {
 		display: grid;
 		justify-content: center;
+		align-content: center;
 		height: 100dvh;
 		padding: 4px;
-		grid: auto 1fr / minmax(min-content, 420px);
+		grid: auto minmax(min-content, 600px) / minmax(min-content, 420px);
 	}
 
 	header {
@@ -44,11 +46,12 @@
 		border: 1px solid grey;
 		overflow: auto;
 		box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
-		padding: 16px 24px;
+		padding: 16px 50px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		background: white;
 	}
 
 	main > :global(:first-child) {
@@ -77,5 +80,9 @@
 
 	main > :global(button:last-child) {
 		border: none;
+	}
+
+	main > :global(button:last-child:disabled) {
+		background: grey;
 	}
 </style>
