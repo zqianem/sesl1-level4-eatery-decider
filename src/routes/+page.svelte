@@ -4,17 +4,11 @@
 </p>
 
 <ol>
-	<li>Find restaurants</li>
+	<li>Get list of nearby eats</li>
 	<li>Share link</li>
 	<li>Everyone votes!</li>
 </ol>
 
 <p>The winner will be randomly picked from the overlap in votes.</p>
 
-<a href="/new">Begin</a>
-
-<style>
-	a {
-		margin-top: auto;
-	}
-</style>
+<a href="/new">Start</a>

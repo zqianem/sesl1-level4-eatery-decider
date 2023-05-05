@@ -11,7 +11,7 @@
 	}
 </script>
 
-<form method="POST" use:enhance on:submit={handle_submit}>
+<form method="POST" use:enhance on:submit={handle_submit} id="options">
 	<fieldset>
 		<legend>Which restaurants are you okay with?</legend>
 		{#each options as option, i}
@@ -21,8 +21,8 @@
 			</label>
 		{/each}
 	</fieldset>
-	<button disabled={loading}>Submit vote</button>
 </form>
+<button form="options" disabled={loading}>Submit vote</button>
 
 <style>
 	label {

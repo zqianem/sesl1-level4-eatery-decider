@@ -44,9 +44,38 @@
 		border: 1px solid grey;
 		overflow: auto;
 		box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
-		padding: 1em 2em;
+		padding: 16px 24px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		align-items: center;
+	}
+
+	main > :global(:first-child) {
+		margin-top: auto;
+	}
+
+	main > :global(:last-child) {
+		margin-top: auto;
+		color: white;
+		background: black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		max-width: 300px;
+		height: 60px;
+		border-radius: 60px;
+		padding: 1em;
+		font-size: 24px;
+		cursor: pointer;
+	}
+
+	main > :global(a:last-child) {
+		text-decoration: none;
+	}
+
+	main > :global(button:last-child) {
+		border: none;
 	}
 </style>

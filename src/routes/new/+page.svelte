@@ -43,7 +43,7 @@
 	}
 </script>
 
-<form method="POST" use:enhance on:submit={handle_submit}>
+<form method="POST" use:enhance on:submit={handle_submit} id="myform">
 	<label>
 		Location:
 		<output name="address" for="lat lon">{address}</output>
@@ -85,8 +85,8 @@
 	{#if form?.no_results}
 		<p>No open restaurants found — try increasing the max distance</p>
 	{/if}
-	<button disabled={loading}>Find restaurants</button>
 </form>
+<button disabled={loading} form="myform">Find restaurants</button>
 
 <style>
 	label {
