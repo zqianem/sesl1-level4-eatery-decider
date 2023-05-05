@@ -108,7 +108,7 @@ function tomtom_result_to_option(result, lat, lon) {
 		name,
 		phone,
 		address: freeformAddress,
-		distance: haversine({ lat, lon }, position),
+		distance: haversine({ lat, lon }, position) / 1609.344,
 		tags: categories.filter((category) => category !== 'restaurant')
 	};
 }
