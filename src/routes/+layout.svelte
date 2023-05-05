@@ -85,7 +85,7 @@
 		cursor: pointer;
 	}
 
-	main > :global(h2:first-child) {
+	main > :global(h2) {
 		font-weight: 300;
 		margin-bottom: auto;
 	}

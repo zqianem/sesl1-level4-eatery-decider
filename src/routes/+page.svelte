@@ -1,4 +1,4 @@
-<p>Can't agree on where to eat?</p>
+<p class="first">Can't agree on where to eat?</p>
 <p>This app will help you decide in three easy steps:</p>
 
 <ol>
@@ -12,7 +12,7 @@
 <a href="/new">Start</a>
 
 <style>
-	p:first-child {
+	p.first {
 		margin-top: auto;
 	}
 
