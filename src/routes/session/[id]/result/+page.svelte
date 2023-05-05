@@ -1,9 +1,18 @@
 <script>
 	import loading_image from '$lib/food.gif';
 	import sad_image from '$lib/sad-pikachu.gif';
+	import { onMount } from 'svelte';
+	import { invalidateAll } from '$app/navigation';
 
 	export let data;
 	$: ({ options, winner } = data);
+
+	onMount(() => {
+		const interval = setInterval(() => {
+			if (winner === null) invalidateAll();
+		}, 1000);
+		return () => clearInterval(interval);
+	});
 </script>
 
 <h2>The Decision</h2>
