@@ -21,6 +21,7 @@
 		<slot />
 	</main>
 </div>
+<footer><a href="https://www.freepik.com/free-vector/cartoon-italian-restaurant-interior_15569250.htm#query=restaurant&position=25&from_view=search&track=sph">Image by pikisuperstar</a> on Freepik</footer>
 
 <style>
 	:global(*) {
@@ -31,6 +32,10 @@
 		margin: 0;
 		font-family: system-ui;
 		font-size: 18px;
+		background-image: url(back.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
 	}
 
 	div.grid {
@@ -45,6 +50,15 @@
 
 	header {
 		padding: 8px;
+	}
+	
+		footer {
+		text-align: center;
+		color: antiquewhite;
+		position: absolute;
+    bottom: 0px;
+    height: 10px;
+    width: 100%;
 	}
 
 	h1 {
