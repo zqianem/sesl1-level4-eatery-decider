@@ -1,7 +1,10 @@
 import { error as sk_error } from '@sveltejs/kit';
+import { TOMTOM_KEY } from '$env/static/private';
+import { shuffle } from 'd3-array';
+import haversine from 'haversine-distance';
 
-export async function create_session(supabase) {
-	const options = await get_options();
+export async function create_session(supabase, lat, lon, radius) {
+	const options = await get_options(lat, lon, radius);
 	const { data, error } = await supabase
 		.from('eat_sessions')
 		.insert({ options })
@@ -62,12 +65,37 @@ export async function set_winner(supabase, id, winner) {
 	if (error) throw sk_error(500, error);
 }
 
-async function get_options() {
-	return [
-		{ name: 'Jamba Juice', food: 'smoothie' },
-		{ name: 'Sbarro', food: 'pizza' },
-		{ name: 'Chipotle', food: 'guacamole' },
-		{ name: 'Five Guys', food: 'peanuts' },
-		{ name: 'KFC', food: 'chicken' }
-	];
+async function get_options(lat, lon, radius) {
+	const params = new URLSearchParams({
+		key: TOMTOM_KEY,
+		categorySet: 7315, // restaurants
+		limit: 100,
+		lat,
+		lon,
+		radius
+	});
+	const url = `https://api.tomtom.com/search/2/nearbySearch/.json?${params}`;
+	const response = await fetch(url);
+	const data = await response.json();
+	const { errorText } = data;
+
+	if (errorText) throw sk_error(500, errorText);
+
+	const { results } = data;
+	shuffle(data.results);
+
+	return results.slice(0, 10).map((result) => {
+		const {
+			poi: { name, phone, categories },
+			address: { freeformAddress },
+			position
+		} = result;
+		return {
+			name,
+			phone,
+			address: freeformAddress,
+			distance: haversine({ lat, lon }, position),
+			type: categories.filter((category) => category !== 'restaurant')
+		};
+	});
 }
