@@ -31,7 +31,8 @@
 		}
 	}
 
-	let loading = false;
+	let loading;
+	$: form, (loading = false);
 
 	function handle_submit() {
 		loading = true;
@@ -82,7 +83,7 @@
 		/>
 	</label>
 	{#if form?.no_results}
-		<p>No results — try increasing the max distance</p>
+		<p>No open restaurants found — try increasing the max distance</p>
 	{/if}
 	<button disabled={loading}>Find restaurants</button>
 </form>
