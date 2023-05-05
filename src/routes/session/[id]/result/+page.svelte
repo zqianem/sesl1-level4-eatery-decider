@@ -41,9 +41,13 @@
 		</a>
 	</div>
 {/if}
-<a href="/">
-	{winner < 0 ? 'Try again' : 'Return home'}
-</a>
+{#if winner === null}
+	<p class="info">(page will update automatically)</p>
+{:else}
+	<a href="/">
+		{winner < 0 ? 'Try again' : 'Return home'}
+	</a>
+{/if}
 
 <style>
 	div.image-wrapper {
@@ -80,5 +84,9 @@
 		cursor: pointer;
 		width: 230px;
 		display: block;
+	}
+
+	p.info {
+		margin-top: auto;
 	}
 </style>
