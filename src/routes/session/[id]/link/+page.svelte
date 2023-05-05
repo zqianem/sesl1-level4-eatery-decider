@@ -28,7 +28,6 @@
 		display: block;
 		overflow: auto;
 		max-width: 300px;
-		height: 36px;
 		white-space: nowrap;
 	}
 
