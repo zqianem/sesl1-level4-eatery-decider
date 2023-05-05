@@ -10,6 +10,7 @@
 	}
 </script>
 
+<h2>Step 2: Share link</h2>
 <p>Share this link before voting:</p>
 <span>{url}</span>
 <button on:click={copy} disabled={copied} class="copy">

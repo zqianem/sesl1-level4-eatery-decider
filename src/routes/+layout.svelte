@@ -73,6 +73,12 @@
 		cursor: pointer;
 	}
 
+	main > :global(h2:first-child) {
+		font-weight: 300;
+		margin-top: 1em;
+		margin-bottom: auto;
+	}
+
 	main > :global(a:last-child) {
 		text-decoration: none;
 	}

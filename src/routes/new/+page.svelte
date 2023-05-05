@@ -43,6 +43,7 @@
 	}
 </script>
 
+<h2>Step 1: Nearby Eats</h2>
 <form method="POST" use:enhance on:submit={handle_submit} id="myform">
 	<label class="loc">
 		<span>Location:</span>

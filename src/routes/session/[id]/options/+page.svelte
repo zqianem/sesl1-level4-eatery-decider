@@ -11,6 +11,7 @@
 	}
 </script>
 
+<h2>Step 3: Vote!</h2>
 <form method="POST" use:enhance on:submit={handle_submit} id="options">
 	<fieldset>
 		<legend>Which restaurants are you okay with?</legend>
