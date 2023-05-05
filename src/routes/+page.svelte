@@ -70,7 +70,7 @@
 		/>
 	</label>
 	<label>
-		# of people:
+		Number of people:
 		<output name="count" for="people">{people}</output>
 		<input
 			type="range"

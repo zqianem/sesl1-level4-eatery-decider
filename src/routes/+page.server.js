@@ -4,7 +4,7 @@ import { get_options, create_session, reverse_lookup } from '$lib/server';
 export async function load({ locals: { supabase }, platform }) {
 	const { latitude: lat = 37.337, longitude: lon = -121.89 } =
 		platform?.context.geo ?? {};
-	const address = await reverse_lookup(lat, lon);
+	const address = `near ${await reverse_lookup(lat, lon)}`;
 
 	return { lat, lon, address };
 }
