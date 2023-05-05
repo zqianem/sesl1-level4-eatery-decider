@@ -6,6 +6,7 @@
 
 	let { lat, lon, address } = data; // intentionally not reactive to data
 	let radius = 2;
+	let people = 2;
 
 	let precise = false;
 	let location_loading = false;
@@ -66,6 +67,18 @@
 			max="30"
 			step="0.1"
 			bind:value={radius}
+		/>
+	</label>
+	<label>
+		# of people:
+		<output name="count" for="people">{people}</output>
+		<input
+			type="range"
+			name="people"
+			id="people"
+			min="1"
+			max="10"
+			bind:value={people}
 		/>
 	</label>
 	{#if form?.no_results}

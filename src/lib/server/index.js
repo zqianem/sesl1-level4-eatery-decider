@@ -3,10 +3,10 @@ import { TOMTOM_KEY } from '$env/static/private';
 import shuffle from 'array-shuffle';
 import haversine from 'haversine-distance';
 
-export async function create_session(supabase, options) {
+export async function create_session(supabase, options, votes_required) {
 	const { data, error } = await supabase
 		.from('eat_sessions')
-		.insert({ options })
+		.insert({ options, votes_required })
 		.select()
 		.maybeSingle();
 

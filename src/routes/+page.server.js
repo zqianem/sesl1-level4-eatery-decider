@@ -15,13 +15,14 @@ export const actions = {
 		const lat = form.get('lat');
 		const lon = form.get('lon');
 		const radius = form.get('radius');
+		const votes_required = form.get('people');
 
 		const options = await get_options(lat, lon, radius);
 		if (options.length === 0) {
 			return fail(400, { no_results: true, radius });
 		}
 
-		const id = await create_session(supabase, options);
+		const id = await create_session(supabase, options, votes_required);
 
 		throw redirect(303, `/session/${id}/link`);
 	}
