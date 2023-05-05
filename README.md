@@ -13,7 +13,10 @@ git clone https://github.com/zqianem/sesl1-level4-eatery-decider.git
 npm install
 ```
 
-Get the project URL and service role API key from [Supabase](https://app.supabase.com/project/ejyhdjdsexqnttkydvve/settings/api) and add them to `.env`:
+Get API keys from the following dashboards and add them to `.env`:
+
+- [Supabase](https://app.supabase.com/project/ejyhdjdsexqnttkydvve/settings/api)
+- [TomTom](https://developer.tomtom.com/user/me/apps)
 
 ```bash
 cp .env.example .env
