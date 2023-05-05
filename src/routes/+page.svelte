@@ -12,6 +12,10 @@
 <a href="/new">Start</a>
 
 <style>
+	p:first-child {
+		margin-top: auto;
+	}
+
 	ol {
 		padding: 0;
 	}

@@ -53,11 +53,7 @@
 		background: white;
 	}
 
-	main > :global(:first-child) {
-		margin-top: auto;
-	}
-
-	main > :global(:last-child) {
+	main > :global(:is(a, button):last-child) {
 		margin-top: auto;
 		color: white;
 		background: black;
@@ -75,7 +71,6 @@
 
 	main > :global(h2:first-child) {
 		font-weight: 300;
-		margin-top: 1em;
 		margin-bottom: auto;
 	}
 

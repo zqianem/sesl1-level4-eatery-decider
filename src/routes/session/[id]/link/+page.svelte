@@ -28,7 +28,7 @@
 	}
 
 	button.copy {
-		margin-top: 1em;
+		margin: 1em 0;
 		border-radius: 100px;
 		appearance: none;
 		border: none;
