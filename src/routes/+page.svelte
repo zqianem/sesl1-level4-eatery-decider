@@ -42,11 +42,11 @@
 </script>
 
 <form method="POST" use:enhance on:submit={handle_submit}>
-	<input type="hidden" name="lat" value={lat} id="lat" />
-	<input type="hidden" name="lon" value={lon} id="lon" />
 	<label>
 		Location:
 		<output name="address" for="lat lon">{address}</output>
+		<input type="hidden" name="lat" value={lat} id="lat" />
+		<input type="hidden" name="lon" value={lon} id="lon" />
 	</label>
 	<button type="button" disabled={precise} on:click={use_precise_location}>
 		{#if location_loading}
@@ -61,6 +61,7 @@
 		<input
 			type="range"
 			name="radius"
+			id="radius"
 			min="0.1"
 			max="30"
 			step="0.1"
